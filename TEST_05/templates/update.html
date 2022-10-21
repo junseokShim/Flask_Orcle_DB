@@ -1,0 +1,37 @@
+{% extends "parents.html" %}
+{% block body %}
+
+<form action="/updateResult">
+    
+    <br><br><h1>수정</h1><br><br>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">수정대상이름</span>
+        </div>
+        <input type="text" class="form-control" placeholder="이름을 입력하세요" name="name">
+    </div>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">수정이름</span>
+        </div>
+        <input type="text" class="form-control" placeholder="이름을 입력하세요" name="to_name">
+    </div>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">수정제목</span>
+        </div>
+        <input type="text" class="form-control" placeholder="제목을 입력하세요" name="to_title">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">수정내용</span>
+        </div>
+         <textarea cols="100" rows="4" name="to_contents"></textarea>
+    </div>
+    <button class="btn btn-primary">수정</button>
+</form>
+{% endblock %}

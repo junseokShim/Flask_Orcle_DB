@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test</title>
+        <script>
+            function recvFn()
+            {
+                jData = xmlHttp.responseText
+                console.log( jData )
+                jArr = JSON.parse( jData )
+                console.log( jArr )
+                
+                for( j of jArr){
+                    console.log( j['NAME'], j['AGE'] )
+                    tr = mytable.insertRow()
+                    td1 = tr.insertCell()
+                    td2 = tr.insertCell()
+                    td1.innerText = j['NAME']
+                    td2.innerText =  j['AGE']
+                }
+                
+                // myshow.innerHTML = xmlHttp.responseText //수신데이터
+            }
+            function callAjax(){
+                xmlHttp = new XMLHttpRequest() 
+                xmlHttp.onload = recvFn
+                xmlHttp.open('GET', '/selectJson')
+                xmlHttp.send() //ajax요청
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="callAjax()">ajax요청</button>
+        <hr>
+        <div id="myshow"></div>
+        <table>
+            <thead>
+                <tr><th>이름</th><th>나이</th></tr>
+            </thead>
+            <tbody id="mytable">
+                
+            </tbody>
+        </table>
+
+    </body>
+</html>
+
+
+
+

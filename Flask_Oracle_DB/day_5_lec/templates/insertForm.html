@@ -1,0 +1,28 @@
+{% extends "parents.html" %}
+
+{% block title %}
+<h1>상품관리</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/insertResult" tartget="myi">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">이름</span>
+        </div>
+        <input type="text" class="form-control" placeholder="제품명을 입력하세요" name="myname">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">이메일</span>
+        </div>
+        <input type="email" class="form-control" name="myemail">
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary btn-lg buttons">입력</button>
+    </div>
+</form>
+
+<iframe name="myi" width="500" height="1000" frameborder="0">
+</iframe> 
+{% endblock %}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>상품관리</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            isshow=true
+            function recvFn1()
+            {
+                myshow.innerHTML = xmlHttp.responseText //수신된 데이터
+                mytablehead.innerHTML = ""
+                mytable.innerHTML = ""
+            }
+            function recvFn2( )
+            {
+                if(isshow){
+                    myshow.innerHTML = ""
+                    isshow=true
+                }
+                mytablehead.innerHTML = ""
+                mytable.innerHTML = ""
+                jData = xmlHttp.responseText
+                console.log( jData )
+                jArr = JSON.parse( jData )
+                console.log( jArr )  //<tr><th>제품명</th><th>수량</th></tr>
+                tr = mytablehead.insertRow()
+                th1 = tr.insertCell()
+                th2 = tr.insertCell()
+                th3 = tr.insertCell()
+                th1.innerText = "제품명"
+                th2.innerText = "수량"
+                th3.innerText = "생산일"
+                for( j of jArr){
+                    console.log( j['PNAME'], j['PCNT'], j['PDATE'] )
+                    tr = mytable.insertRow()
+                    td1 = tr.insertCell()
+                    td2 = tr.insertCell()
+                    td3 = tr.insertCell()
+                    td1.innerText = j['PNAME']
+                    td2.innerText = j['PCNT']
+                    td3.innerText = j['PDATE']
+                }
+                
+                // myshow.innerHTML = xmlHttp.responseText //수신데이터
+            }
+            function callAjax1(turl){
+                console.log('call...')
+                xmlHttp = new XMLHttpRequest() 
+                xmlHttp.onload = recvFn1
+                xmlHttp.open('GET', turl)
+                xmlHttp.send() //ajax요청
+            }
+            function callAjax2(turl){
+                xmlHttp = new XMLHttpRequest() 
+                xmlHttp.onload = recvFn2
+                xmlHttp.open('GET', turl)
+                xmlHttp.send() //ajax요청
+            }
+            function callAjax3(){
+                isshow=false
+                xmlHttp = new XMLHttpRequest() 
+                xmlHttp.onload = recvFn2
+                //myurl ='./searchResultPool'+'?sname="+sname.value
+                myurl =`./searchResultPool?sname=${sname.value}`
+                xmlHttp.open('GET', myurl)
+                xmlHttp.send() //ajax요청
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>상품관리</h1>
+            <div class="row">
+                <div class="col-sm-4 jumbotron">
+                    <a href="#" onclick="callAjax1('./insertForm')"><h3>입력</h3></a>
+                </div>
+                <div class="col-sm-4 jumbotron">
+                    <a href="#" onclick="callAjax2('./selectProductAll')"><h3>보기</h3></a>
+                </div>
+                <div class="col-sm-4 jumbotron">
+                    <a href="#" onclick="callAjax1('./searchForm')"><h3>검색</h3></a>
+                </div>
+            </div>
+            <br>
+            <hr>
+            
+            
+            <div id="myshow"></div>
+            <table class="table table-striped table-bordered" width="100%">
+                <thead id="mytablehead">
+                </thead>
+                <tbody id="mytable">
+                </tbody>
+            </table>
+            
+        </div>
+    </body>
+    
+</html>

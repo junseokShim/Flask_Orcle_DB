@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test</title>
+        <script>
+            
+            // sse request button click --> sseStartfn --> recvFn 순으로 Process 진행
+            function recvFn(e){
+                
+                // 주기적으로 계속 호출되는 함수
+                console.log(e.data)
+                jArr = JSON.parse(e.data)
+                mytable.innerHTML = ""
+                for(j of jArr){
+                    tr=mytable.insertRow()
+                    td1 = tr.insertCell()
+                    td2 = tr.insertCell()
+                    td1.innerText = j['NAME']
+                    td2.innerText = j['AGE']
+                }
+                
+            }
+            
+            
+            function sseStartfn(){
+                
+                // IoT 분야와 많은 밀접한 관계를 가짐
+                evtSource = new EventSource('/ssecall')
+                evtSource.onmessage = recvFn
+                
+            }
+            
+            
+            function sseStartfnDB(){
+                
+                // IoT 분야와 많은 밀접한 관계를 가짐
+                evtSource = new EventSource('/ssecalldb')
+                evtSource.onmessage = recvFn
+                
+            }
+            
+            function sseStopfn(){
+                evtSource.close()
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="sseStartfn()">sse request</button>
+        <button onclick="sseStartfnDB()">sse db request</button>
+
+        <button onclick="sseStopfn()">sse stop</button>
+        <div id="myshow">
+            <div class="container">
+            <h1>table TEST</h1>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr><th>이름</th><th>나이</th></tr>
+                </thead>
+                <tbody id="mytable">
+                    {% for lst in myData %}
+                    <tr><td>{{lst['name']}}</td><td>{{lst['age']}}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>    
+        </div>
+        </div>
+    </body>
+</html>
+
+
+

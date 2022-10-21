@@ -1,0 +1,29 @@
+{% extends "parents.html" %}
+
+{% block title %}
+<h1>상품관리</h1>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+            <div class="col-sm-4 text-center">
+              <form action="/insertMenu" target="_blank">
+                <button class="btn btn-primary btn-block buttons">입력</button>
+              </form>
+            </div>
+            <div class="col-sm-4 text-center">
+              <form action="/totalMenu" target="_blank">
+                <button class="btn btn-secondary btn-block buttons">보기</button>
+              </form>
+            </div>
+            <div class="col-sm-4 text-center">
+              <form action="/searchMenu" target="_blank">
+                <button class="btn btn-danger btn-block buttons">검색</button>
+              </form>
+            </div>
+      </div>
+      <br>
+      <div class="text-center member_img card card-body">
+              <img class="card-img-top" src="static/images/ether.png" height="75%" width="75%">
+      </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "parents.html" %}
+{% block body %}
+
+<form action="/insertResult">
+    
+    <br><br><h1>글쓰기</h1><br><br>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">이름</span>
+        </div>
+        <input type="text" class="form-control" placeholder="이름을 입력하세요" name="name">
+    </div>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">제목</span>
+        </div>
+        <input type="text" class="form-control" placeholder="제목을 입력하세요" name="title">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">내용</span>
+        </div>
+         <textarea cols="100" rows="4" name="contents"></textarea>
+    </div>
+    <button class="btn btn-primary">쓰기</button>
+</form>
+{% endblock %}

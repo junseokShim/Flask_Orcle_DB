@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test</title>
+        <style>
+            h1{
+                color:red;
+            }
+        </style>
+        <script>
+            function recvFn()
+            {
+                console.log('call')
+                myshow.innerHTML = xmlHttp.responseText //수신데이터
+            }
+            function callAjax(){
+               // myshow.innerText ="헬로.."
+                //비동기통신(ajax) 객체
+                xmlHttp = new XMLHttpRequest() 
+                xmlHttp.onload = recvFn //이벤트수신시 호출되는 콜백함수 등록
+                xmlHttp.open('GET', '/ajaxtest')
+                xmlHttp.send() //ajax요청
+            }
+        </script>
+    </head>
+    <body>
+        <a href="/ajaxtest" target="myi">일반요청</a><br>
+        <button onclick="callAjax()">ajax요청</button>
+        <hr>
+        <div id="myshow"></div>
+        <hr>
+        <iframe name="myi" width="100%" height="300" frameborder="0"></iframe>
+    </body>
+</html>
+
+
+
+

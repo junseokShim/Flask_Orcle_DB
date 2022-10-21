@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Junseok's page_a</title>
+    </head>
+    <body>
+        <form action="/formresult" target="myi">
+            <br>
+            <label>이름 : </label>
+            <input type="text" required name="myname" value="이름"> <br>
+            <br>
+            <label>나이 : </label>
+            <input type="number" required min="1" max="150" step="1" name="myage"><br>
+            <br>
+            <label>생일 : </label>
+            <input type="date" name="mybirth"><br>
+            <br>
+            <label>시간 : </label>
+            <input type="time" name="mytime" min="09:00" max="18:00"><br>
+            <br>
+            <label>전화번호 : </label>
+            <input type="tel" pattern="\d{2,3}-\d{3,4}-\d{4}" placeholder="000-0000-0000 형식으로 입력" name="mytel"><br>
+            <br>
+            <label>이메일 : </label>
+            <input type="email" name="myemail"><br>
+            <br>
+            <label>URL : </label>
+            <input type="url" name="myurl"><br>
+            <br>
+            <fieldset>
+                <legend>색상</legend>           
+                <input type="radio" name="color" value="빨강"><label>빨강</label><br>
+                <input type="radio" name="color" value="파랑"><label>파랑</label><br>
+                <input type="radio" name="color" value="노랑"><label>노랑</label><br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>취미</legend>           
+                <input type="checkbox" name="hobby" value="낚시"><label>낚시</label><br>
+                <input type="checkbox" name="hobby" value="골프"><label>골프</label><br>
+                <input type="checkbox" name="hobby" value="영화"><label>영화</label><br>
+            </fieldset>
+            <br>
+            <select name="company">
+                <option value="회사1">회사1</option>
+                <option value="회사2">회사2</option>
+                <option value="회사3">회사3</option>
+            </select>
+            
+            <br><br>
+            <textarea cols="100" rows="4" name="mytxt"></textarea>
+            <br>
+            <button>
+                확인
+            </button>
+        </form>
+
+
+        <iframe name="myi" width="100%" height=300 frameborder="0">
+        </iframe>
+
+    </body>
+</html>

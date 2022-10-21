@@ -1,0 +1,18 @@
+{% extends "parents.html" %}
+
+{% block title %}
+<h1>상품 제조 현황</h1>
+{% endblock %}
+
+{% block body %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr><th>제품명</th><th>수량</th><th>생산일</th></tr>
+    </thead>
+    <tbody>
+        {% for n, a, b in result %}
+            <tr><td>{{n}}</td><td>{{a}}</td><td>{{b|strftime}}</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

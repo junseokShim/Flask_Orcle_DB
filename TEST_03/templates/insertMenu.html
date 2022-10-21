@@ -1,0 +1,31 @@
+{% extends "parents.html" %}
+
+{% block title %}
+<h1>상품관리</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/insertResult">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">제품명</span>
+        </div>
+        <input type="text" class="form-control" placeholder="제품명을 입력하세요" name="name">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">수 량</span>
+        </div>
+        <input type="number" class="form-control" name="quantity">
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">생산일</span>
+        </div>
+        <input type="date" class="form-control" name="days">
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary btn-lg buttons">입력</button>
+    </div>
+</form>
+{% endblock %}

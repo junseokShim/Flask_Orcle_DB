@@ -1,0 +1,22 @@
+{% extends "parents.html" %}
+
+{% block body %}
+<form action="/searchResult" target="myi"><br><br>
+    <h1>검색</h1><br><br>
+    
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">이름</span>
+        </div>
+        <input type="text" class="form-control" placeholder="검색할 유저의 이름을 입력하세요" name="name">
+        <div style="">
+            <button class="btn btn-primary btn">검색</button>
+        </div>
+    </div>
+    
+</form>
+
+<iframe name="myi" width="100%" height=300 frameborder="0">
+</iframe>
+
+{% endblock %}
